@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who am I</title>
+    <style>
+        body {
+            text-align: center;
+           
+        }
+        #user__name {
+            text-decoration: underline;
+            color: red;
+        }
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .user {
+            border: 1px solid red;
+            display: block;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Who are you?</h1>
+    <div class="content">
+        <div class="user">
+            <h2>My name is <span id="user__name"></span> </h2>
+            <img id="img" alt="">
+            <h3 id="email"></h3>
+           <h3>Age: <span id="age"></span> </h3>
+           <h3>Country: <span id="country"></span></h3>
+            </div>
+    </div>
+    
+    
+
+    <!-- Shom me user details -->
+    <script type="text/javascript">
+        function random__user() {
+            fetch('https://randomuser.me/api')
+            .then(res => res.json())
+            .then(data => {
+                const user = data.results[0]
+                const name = user.name;
+                const fullName = `${name.title} ${name.first} ${name.last}`
+                document.getElementById('user__name').innerText = fullName;
+                document.getElementById('img').src = `${user.picture.large}`;
+                document.getElementById('email').innerText = `${user.email}`
+                document.getElementById('age').innerText = `${user.dob.age}`
+                document.getElementById('country').innerText = `${user.location.country}`
+            })
+        }
+        random__user()
+        setInterval(() => {
+            random__user()
+        }, 3000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play with api</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        #activity {
+          text-decoration: underline;
+          color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task here</h1>
+    <h2 id="activity"></h2>
+    <h4>Explore More <a href="#">visit here</a></h4>
+    <!-- <script>
+        function doSomething() {
+            fetch('https://www.boredapi.com/api/activity')
+             .then(res => res.json())
+             .then(data => {
+             document.getElementById('activity').innerText = data.activity
+            })
+            doSomething();
+        }
+    </script> -->
+
+    <!-- Thanks always google -->
+    <script type="text/javascript">  
+        function doTask() {
+           fetch('https://www.boredapi.com/api/activity')
+           .then(response => response.json())
+           .then(data => {
+          document.getElementById('activity').innerText = data.activity;
+          console.log(data);
+        })
+        .catch(err => {
+          console.log('error')
+        })
+        }
+        doTask();
+        setInterval(() => {
+            doTask()
+        }, 1000)
+    </script>
+
+
+<!-- For good practice -->
+<script type="text/javascript">
+    var apiUrl = 'https://pokeapi.co/api/v2/pokemon/ditto/';
+    fetch(apiUrl).then(response => {
+      return response.json();
+    }).then(data => {
+      // Work with JSON data here
+      console.log(data);
+    }).catch(err => {
+      // Do something for an error here
+    });
+</script>
+</body>
+</html>
